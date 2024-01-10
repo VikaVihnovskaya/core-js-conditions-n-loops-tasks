@@ -68,8 +68,47 @@ function getMaxNumber(a, b, c) {
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  * {x: 1, y: 1}, {x: 2, y: 8} => false
  */
-function canQueenCaptureKing(/* queen, king */) {
-  throw new Error('Not implemented');
+
+function canQueenCaptureKing(queen, king) {
+  const result = [];
+
+  const directions = [
+    [-1, 0],
+    [1, 0],
+    [0, -1],
+    [0, 1],
+    [1, 1],
+    [-1, -1],
+    [1, -1],
+    [-1, 1],
+  ];
+
+  const queensSet = new Set([10 * queen.x + queen.y]);
+
+  function moveDirection(x, y) {
+    let xKing = king.x;
+    let yKing = king.y;
+
+    while (true) {
+      xKing += x;
+      yKing += y;
+
+      if (xKing < 0 || xKing >= 8 || yKing < 0 || yKing >= 8) {
+        break;
+      }
+
+      if (queensSet.has(10 * xKing + yKing)) {
+        result.push([xKing, yKing]);
+        break;
+      }
+    }
+  }
+
+  for (let i = 0; i < directions.length; i += 1) {
+    moveDirection(directions[i][0], directions[i][1]);
+  }
+
+  return result.length !== 0;
 }
 
 /**
