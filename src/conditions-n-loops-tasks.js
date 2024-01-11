@@ -191,27 +191,97 @@ function convertToRomanNumerals(num) {
  *  '1950.2'  => 'one nine five zero point two'
  */
 function convertNumberToString(numberStr) {
-  const mapping = new Map([
-    ['1', 'one'],
-    ['2', 'two'],
-    ['3', 'three'],
-    ['4', 'four'],
-    ['5', 'five'],
-    ['6', 'six'],
-    ['7', 'seven'],
-    ['8', 'eight'],
-    ['9', 'nine'],
-    ['0', 'zero'],
-    ['.', 'point'],
-    [',', 'point'],
-    ['-', 'minus'],
-  ]);
   let result = '';
   for (let i = 0; i < numberStr.length; i += 1) {
-    result += mapping.get(numberStr[i]);
-    result += ' ';
+    switch (numberStr[i]) {
+      case '-':
+        if (i === 0) {
+          result += 'minus';
+        } else {
+          result += ' minus';
+        }
+        break;
+      case '9':
+        if (i === 0) {
+          result += 'nine';
+        } else {
+          result += ' nine';
+        }
+        break;
+      case '8':
+        if (i === 0) {
+          result += 'eight';
+        } else {
+          result += ' eight';
+        }
+        break;
+      case '7':
+        if (i === 0) {
+          result += 'seven';
+        } else {
+          result += ' seven';
+        }
+        break;
+      case '6':
+        if (i === 0) {
+          result += 'six';
+        } else {
+          result += ' six';
+        }
+        break;
+      case '5':
+        if (i === 0) {
+          result += 'five';
+        } else {
+          result += ' five';
+        }
+        break;
+      case '4':
+        if (i === 0) {
+          result += 'four';
+        } else {
+          result += ' four';
+        }
+        break;
+      case '3':
+        if (i === 0) {
+          result += 'three';
+        } else {
+          result += ' three';
+        }
+        break;
+      case '2':
+        if (i === 0) {
+          result += 'two';
+        } else {
+          result += ' two';
+        }
+        break;
+      case '1':
+        if (i === 0) {
+          result += 'one';
+        } else {
+          result += ' one';
+        }
+        break;
+      case '0':
+        if (i === 0) {
+          result += 'zero';
+        } else {
+          result += ' zero';
+        }
+        break;
+      case '.':
+        result += ' point';
+        break;
+      case ',':
+        result += ' point';
+        break;
+      default:
+        break;
+    }
   }
-  return result.trim();
+  return result;
 }
 
 /**
