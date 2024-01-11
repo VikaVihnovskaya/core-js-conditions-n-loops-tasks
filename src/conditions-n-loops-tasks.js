@@ -88,8 +88,8 @@ function canQueenCaptureKing(queen, king) {
   function moveDirection(x, y) {
     let xKing = king.x;
     let yKing = king.y;
-
-    while (true) {
+    const val = true;
+    while (val) {
       xKing += x;
       yKing += y;
 
